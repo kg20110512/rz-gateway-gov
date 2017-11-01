@@ -1,4 +1,4 @@
-package com.sdjt.rzgatewaygov;
+package com.sdjt.rzgatewaygov.configuration;
 
 import oracle.jdbc.OracleData;
 import oracle.jdbc.pool.OracleDataSource;

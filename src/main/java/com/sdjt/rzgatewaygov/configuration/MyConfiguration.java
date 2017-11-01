@@ -1,21 +1,17 @@
-package com.sdjt.rzgatewaygov;
+package com.sdjt.rzgatewaygov.configuration;
 
 
+import com.sdjt.rzgatewaygov.http.MyFastJsonHttpMessageConverter;
 import oracle.jdbc.pool.OracleDataSource;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.sql.DataSource;
-import java.nio.charset.Charset;
 import java.sql.SQLException;
 
 @Component

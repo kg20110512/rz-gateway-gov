@@ -1,4 +1,4 @@
-package com.sdjt.rzgatewaygov;
+package com.sdjt.rzgatewaygov.http;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 

@@ -1,21 +1,19 @@
 package com.sdjt.rzgatewaygov;
 
+import com.sdjt.rzgatewaygov.configuration.GatewayConfiguration;
+import com.sdjt.rzgatewaygov.gateway.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.xml.ws.Response;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,7 +41,7 @@ public class ScheduledTasks {
         List<GatewayBaseInfo> list = gatewayBaseInfoRepository.findByIsSuccess("false");
 //                gatewayBaseInfoRepository.findAll();
         list.stream().forEach(param->{
-            logger.info(param.APPID);
+            logger.info(param.getAPPID());
 
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));

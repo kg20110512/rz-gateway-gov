@@ -1,4 +1,4 @@
-package com.sdjt.rzgatewaygov;
+package com.sdjt.rzgatewaygov.gateway;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

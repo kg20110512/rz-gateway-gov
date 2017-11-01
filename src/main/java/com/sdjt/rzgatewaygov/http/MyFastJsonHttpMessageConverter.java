@@ -1,4 +1,4 @@
-package com.sdjt.rzgatewaygov;
+package com.sdjt.rzgatewaygov.http;
 
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 
