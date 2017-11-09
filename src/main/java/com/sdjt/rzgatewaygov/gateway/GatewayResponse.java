@@ -16,11 +16,6 @@ public class GatewayResponse {
     public GatewayResponse() {
     }
 
-//    public GatewayResponse(String message, boolean isSuccess) {
-//        Message = message;
-//        IsSuccess = isSuccess;
-//    }
-
     public String getBUSID() {
         return BUSID;
     }
@@ -36,14 +31,6 @@ public class GatewayResponse {
     public void setMessage(String message) {
         Message = message;
     }
-
-//    public String getIsSuccess() {
-//        return IsSuccess;
-//    }
-//
-//    public void setIsSuccess(String isSuccess) {
-//        IsSuccess = isSuccess;
-//    }
 
     public boolean isSuccess() {
         return IsSuccess;

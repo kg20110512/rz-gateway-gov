@@ -2,6 +2,7 @@
            gov:
              url1: http://59.224.32.135:8011/BusinessApi/BNSAccept/BaseInfo
 
+
        spring:
            application:
                 name: rz-gateway-gov

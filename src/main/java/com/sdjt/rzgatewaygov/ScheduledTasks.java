@@ -32,15 +32,18 @@ public class ScheduledTasks {
     @Autowired
     GatewayStepInfoRepository gatewayStepInfoRepository;
 
-    //am 8:00
-//    @Scheduled(cron = "0 0 8 0 0")
-//    @Scheduled(fixedRate = 5000)
-    public void action1(){
-        String url1 = gatewayConfiguration.getUrl1();
-        logger.info(url1);
+//    @Scheduled(cron = "0 53 22 ? * MON-FRI")
+    @Scheduled(fixedRate = 5000)
+    public void baseInfo() {
+        logger.info("=== baseInfo interface invoked by schedule ===");
         List<GatewayBaseInfo> list = gatewayBaseInfoRepository.findByIsSuccess("false");
-//                gatewayBaseInfoRepository.findAll();
-        list.stream().forEach(param->{
+        if (list.size() > 0){
+
+            String baseInfoUrl = gatewayConfiguration.getUrl1();
+            logger.info(baseInfoUrl);
+            logger.info("=== stepinfo interface begin ===");
+
+            list.stream().forEach(param -> {
             logger.info(param.getAPPID());
 
             HttpHeaders headers = new HttpHeaders();
@@ -61,86 +64,69 @@ public class ScheduledTasks {
 //            charsets.add(Charset.forName("utf-8"));
 //            headers.setAcceptCharset(charsets);
 //            headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
-            HttpEntity<GatewayBaseInfo> httpEntity = new HttpEntity<>(param, headers);
+                HttpEntity<GatewayBaseInfo> httpEntity = new HttpEntity<>(param, headers);
 
-//            String response = restTemplate.postForObject(url1, null, String.class);
-            GatewayResponse response = restTemplate.postForObject(url1, httpEntity, GatewayResponse.class);
+                GatewayResponse response = restTemplate.postForObject(baseInfoUrl, httpEntity, GatewayResponse.class);
 
-//            if (response.isSuccess()){
                 param.setIsSuccess(String.valueOf(response.isSuccess()));
-                if (response.getMessage() != null){
+                if (response.getMessage() != null) {
                     param.setMESSAGE(response.getMessage());
                 }
-                if (response.getBUSID() != null){
+                if (response.getBUSID() != null) {
                     param.setBUSID(response.getBUSID());
                 }
                 gatewayBaseInfoRepository.save(param);
-//            }
-//            ResponseEntity<GatewayResponse> responseEntity = restTemplate.postForEntity(url1, null, GatewayResponse.class);
-//            logger.info(responseEntity.getBody().getMessage());
-//            try {
-//                response = new String(response.getBytes(),"utf-8");
-//            } catch (UnsupportedEncodingException e) {
-//                e.printStackTrace();
-//            }
 
-//            restTemplate.getMessageConverters().forEach(converter->{
-//                logger.info(converter.getClass().getSimpleName());
-//                logger.info(converter.getSupportedMediaTypes().toString());
-//            });
+                System.out.println(response.toString());
+//                logger.info(response.toString());
+//                logger.info(url1);
+                logger.info("=== stepinfo interface over ===");
+            });
+        }
 
-            System.out.println(response.toString());
-            logger.info(response.toString());
-            logger.info(url1);
-//            logger.info(response.getMessage());
-//            logger.info(response.getIsSuccess());
-//            logger.info(responseEntity.getBody().toString());
-//            logger.info(response.getBody().getBUSID());
-            logger.info("=== action1 ===");
-        });
     }
 
-    @Scheduled(fixedRate = 5000)
-    public void action2() {
 
-        String url2 = gatewayConfiguration.getUrl2();
-        logger.info(url2);
+
+    @Scheduled(cron = "0 55 22 ? * MON-FRI")
+    public void stepInfo() {
+
+        logger.info("=== baseInfo interface invoked by schedule ===");
         List<GatewayStepInfo> list = gatewayStepInfoRepository.findByIsSuccessIsNull();
-//                gatewayBaseInfoRepository.findAll();
-        list.stream().forEach(param -> {
-//            logger.info(param.APPID);
+        if (list.size() > 0) {
+            String stepInfoUrl = gatewayConfiguration.getUrl2();
+            logger.info(stepInfoUrl);
+            logger.info("=== stepinfo interface begin ===");
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setAcceptCharset(Arrays.asList(Charset.forName("utf8")));
-            HttpEntity<GatewayStepInfo> httpEntity = new HttpEntity<>(param, headers);
+            list.stream().forEach(param -> {
 
-//            String response = restTemplate.postForObject(url1, null, String.class);
-            GatewayStepInfo response = restTemplate.postForObject(url2, httpEntity, GatewayStepInfo.class);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setAcceptCharset(Arrays.asList(Charset.forName("utf8")));
+                HttpEntity<GatewayStepInfo> httpEntity = new HttpEntity<>(param, headers);
 
+                GatewayStepInfo response = restTemplate.postForObject(stepInfoUrl, httpEntity, GatewayStepInfo.class);
 
-            System.out.println(response.getIsSuccess());
-            System.out.println(response.getMESSAGE());
-            logger.info(response.getMESSAGE());
-            logger.info(url2);
+                System.out.println(response.toString());
+//                System.out.println(response.getIsSuccess());
+//                System.out.println(response.getMESSAGE());
+//                logger.info(response.getMESSAGE());
+//                logger.info(url2);
 
-            param.setIsSuccess(String.valueOf(response.getIsSuccess()));
-            if (response.getMESSAGE() != null) {
-                param.setMESSAGE(response.getMESSAGE());
-            }
-            if (response.getBUSID() != null) {
-                param.setBUSID(response.getBUSID());
-            }
-            gatewayStepInfoRepository.save(param);
+                param.setIsSuccess(String.valueOf(response.getIsSuccess()));
+                if (response.getMESSAGE() != null) {
+                    param.setMESSAGE(response.getMESSAGE());
+                }
+                if (response.getBUSID() != null) {
+                    param.setBUSID(response.getBUSID());
+                }
+                gatewayStepInfoRepository.save(param);
 
-
-
-//            logger.info(response.getMessage());
-//            logger.info(response.getIsSuccess());
-//            logger.info(responseEntity.getBody().toString());
-//            logger.info(response.getBody().getBUSID());
-            logger.info("=== action2 ===");
-        });
+            });
+            logger.info("=== stepinfo interface over ===");
+        } else {
+            logger.info("=== no appropriate stepinfo ===");
+        }
     }
 }

@@ -12,15 +12,10 @@ import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 
 @Component
-//@Configuration
-//@EnableConfigurationProperties(OracleConfiguration.class)
 @ConfigurationProperties(prefix = "oracle")
 public class OracleConfiguration {
-//    @NotNull
     String username;
-//    @NotNull
     String password;
-//    @NotNull
     String url;
 
     public String getUsername() {

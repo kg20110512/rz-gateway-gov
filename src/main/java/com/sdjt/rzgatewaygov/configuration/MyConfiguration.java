@@ -19,16 +19,10 @@ import java.sql.SQLException;
 @EnableConfigurationProperties({GatewayConfiguration.class, OracleConfiguration.class})
 public class MyConfiguration {
 
-//    @Autowired
-//    RestTemplate restTemplate;
-//    @Bean
-//    GatewayConfiguration gatewayConfiguration;
-
     @Autowired
     OracleConfiguration oracleConfiguration;
 
     @Bean
-//    @Primary
     DataSource dataSource() throws SQLException {
         OracleDataSource dataSource = new OracleDataSource();
         dataSource.setUser(oracleConfiguration.getUsername());
@@ -40,15 +34,8 @@ public class MyConfiguration {
     }
 
     @Bean
-//    RestTemplate restTemplate(){
-//        return new RestTemplate();
-//    }
     RestTemplate restTemplate(RestTemplateBuilder builder){
-//        StringHttpMessageConverter m = new StringHttpMessageConverter(Charset.forName("UTF-8"));
-//        return builder.build();
-
         RestTemplate restTemplate = builder.build();
-//        restTemplate.getMessageConverters().add(0,new MyMappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(0,new MyFastJsonHttpMessageConverter());
         return restTemplate;
     }
