@@ -209,4 +209,32 @@ public class GatewayBaseInfo {
     public void setBUSID(String BUSID) {
         this.BUSID = BUSID;
     }
+
+    @Override
+    public String toString() {
+        return "GatewayBaseInfo{" +
+                "SID='" + SID + '\'' +
+                ", APPID='" + APPID + '\'' +
+                ", APPPWD='" + APPPWD + '\'' +
+                ", ITEMCODE='" + ITEMCODE + '\'' +
+                ", YWTYPE='" + YWTYPE + '\'' +
+                ", APPLICANT='" + APPLICANT + '\'' +
+                ", APPLICANTMOBILE='" + APPLICANTMOBILE + '\'' +
+                ", APPLICANTIDCARD='" + APPLICANTIDCARD + '\'' +
+                ", APPLICANTSEX='" + APPLICANTSEX + '\'' +
+                ", APPLICANTCOMPANY='" + APPLICANTCOMPANY + '\'' +
+                ", APPLICANTADDRESS='" + APPLICANTADDRESS + '\'' +
+                ", APPLICANTNATION='" + APPLICANTNATION + '\'' +
+                ", APPLICANTDOB='" + APPLICANTDOB + '\'' +
+                ", SLR='" + SLR + '\'' +
+                ", SQSJ='" + SQSJ + '\'' +
+                ", SLSJ='" + SLSJ + '\'' +
+                ", BJSJ='" + BJSJ + '\'' +
+                ", CNBJSJ='" + CNBJSJ + '\'' +
+                ", BLSTTS='" + BLSTTS + '\'' +
+                ", isSuccess='" + isSuccess + '\'' +
+                ", MESSAGE='" + MESSAGE + '\'' +
+                ", BUSID='" + BUSID + '\'' +
+                '}';
+    }
 }

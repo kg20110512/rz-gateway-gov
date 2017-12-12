@@ -1,6 +1,7 @@
 package com.sdjt.rzgatewaygov.gateway;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,6 +12,13 @@ public interface GatewayStepInfoRepository extends JpaRepository<GatewayStepInfo
 
     List<GatewayStepInfo> findByIsSuccessIsNull();
 
+//    List<GatewayStepInfo> findByIsSuccessNotOrIsSuccessIsNull(String isSuccess);
+
+    @Transactional(timeout = 3)
     List<GatewayStepInfo> findByIsSuccess(String isSuccess);
+
+    @Override
+    @Transactional(timeout = 3)
+    GatewayStepInfo save(GatewayStepInfo stepInfo);
 }
 

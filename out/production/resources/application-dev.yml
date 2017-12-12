@@ -1,0 +1,31 @@
+       gateway:
+           gov:
+             url1: http://59.224.32.135:8011/BusinessApi/BNSAccept/BaseInfo
+
+       spring:
+           application:
+                name: rz-gateway-gov
+#           #basic spring boot config for oracle
+#           datasource:
+#                url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+#                username: rzzhsp
+#                password: rzzhsp
+#                driverClassName: oracle.jdbc.driver.OracleDriver
+           #hibernate config
+           spring:
+              jpa:
+                databasePlatform: org.hibernate.dialect.Oracle10gDialect
+#              http:
+#                 encoding:
+#                    charset: GBK
+#                    enabled: true
+#                    force: true
+
+
+       server:
+            port: 8090
+
+#       oracle:
+#           url: jdbc:oracle:thin:@192.168.10.38:1521:orcl
+#           username: rzzhsp
+#           password: rzzhsp

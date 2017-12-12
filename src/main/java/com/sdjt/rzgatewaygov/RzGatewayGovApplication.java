@@ -12,10 +12,18 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 
 @SpringBootApplication
-public class RzGatewayGovApplication{
+public class RzGatewayGovApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(RzGatewayGovApplication.class, args);
+	}
+
+	@Autowired
+	ScheduledTasks scheduledTasks;
+	@Override
+	public void run(String... args) throws Exception {
+		scheduledTasks.baseInfo();
+		scheduledTasks.stepInfo();
 	}
 //
 //	@Autowired

@@ -101,4 +101,20 @@ public class GatewayStepInfo {
     public void setBUSID(String BUSID) {
         this.BUSID = BUSID;
     }
+
+    @Override
+    public String toString() {
+        return "GatewayStepInfo{" +
+                "SID='" + SID + '\'' +
+                ", BUSID='" + BUSID + '\'' +
+                ", STEPNAME='" + STEPNAME + '\'' +
+                ", ACTORNAME='" + ACTORNAME + '\'' +
+                ", STARTAT='" + STARTAT + '\'' +
+                ", ENDAT='" + ENDAT + '\'' +
+                ", YESNO='" + YESNO + '\'' +
+                ", DESCR='" + DESCR + '\'' +
+                ", isSuccess='" + isSuccess + '\'' +
+                ", MESSAGE='" + MESSAGE + '\'' +
+                '}';
+    }
 }

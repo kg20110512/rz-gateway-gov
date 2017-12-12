@@ -11,8 +11,8 @@ import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import java.sql.SQLException;
 
-@Component
-@ConfigurationProperties(prefix = "oracle")
+//@Component
+//@ConfigurationProperties(prefix = "oracle")
 public class OracleConfiguration {
     String username;
     String password;
