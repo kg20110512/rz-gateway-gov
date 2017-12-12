@@ -20,5 +20,7 @@ public interface GatewayStepInfoRepository extends JpaRepository<GatewayStepInfo
     @Override
     @Transactional(timeout = 3)
     GatewayStepInfo save(GatewayStepInfo stepInfo);
+
+    GatewayStepInfo findBySid(String sid);
 }
 

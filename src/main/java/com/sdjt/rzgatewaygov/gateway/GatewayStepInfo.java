@@ -10,7 +10,8 @@ import javax.persistence.Table;
 public class GatewayStepInfo {
 
     @Id
-    String SID;
+    @Column(name = "SID")
+    String sid;
     String BUSID;
     String STEPNAME;
     String ACTORNAME;
@@ -23,7 +24,7 @@ public class GatewayStepInfo {
     String MESSAGE;
 
     public String getSID() {
-        return SID;
+        return sid;
     }
 
     public String getSTEPNAME() {
@@ -75,7 +76,7 @@ public class GatewayStepInfo {
     }
 
     public void setSID(String SID) {
-        this.SID = SID;
+        this.sid = SID;
     }
 
     public String getIsSuccess() {
@@ -105,7 +106,7 @@ public class GatewayStepInfo {
     @Override
     public String toString() {
         return "GatewayStepInfo{" +
-                "SID='" + SID + '\'' +
+                "SID='" + sid + '\'' +
                 ", BUSID='" + BUSID + '\'' +
                 ", STEPNAME='" + STEPNAME + '\'' +
                 ", ACTORNAME='" + ACTORNAME + '\'' +

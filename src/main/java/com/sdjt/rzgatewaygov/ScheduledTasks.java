@@ -88,6 +88,9 @@ public class ScheduledTasks {
                     param.setMESSAGE(response.getMessage());
                 }
                 if (response.getBUSID() != null) {
+                    GatewayStepInfo stepInfo = gatewayStepInfoRepository.findBySid(param.getSID());
+                    stepInfo.setBUSID(response.getBUSID());
+                    gatewayStepInfoRepository.save(stepInfo);
                     param.setBUSID(response.getBUSID());
                 }
                 gatewayBaseInfoRepository.save(param);
